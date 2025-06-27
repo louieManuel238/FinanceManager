@@ -1,7 +1,13 @@
 <script lang="ts">
 </script>
 <template>
-<h1 >This is a Custom Header</h1>
+    <nav class="container">
+        <ul>
+            <li><NuxtLink to="/">FinanceManager</NuxtLink></li>
+        </ul>
+        <ul>
+            <li><NuxtLink :to="{name: 'expenses'}">Expenses</NuxtLink></li>
+            <li><NuxtLink :to="{name: 'income'}"> Income </NuxtLink></li>
+        </ul>
+    </nav>
 </template>
-<style lang="scss" scoped>
-</style>
