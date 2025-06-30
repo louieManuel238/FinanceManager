@@ -1,14 +1,20 @@
 <script setup lang="ts">
-import {
-  GoogleSignInButton,
-  type CredentialResponse,
-} from "vue3-google-signin";
+import {GoogleSignInButton, type CredentialResponse,} from "vue3-google-signin";
+
+const { loggedIn, session, user, clear, fetch } = useUserSession()
 
 // handle success event
 const handleLoginSuccess = (response: CredentialResponse) => {
   const { credential } = response;
   if(credential){
-    console.log(credential)
+    
+    user = await $fetch("/api/google-login", {
+        method: "POST",
+        body: {
+            token: credential
+        }
+    })
+    console.log(user.value)
   }
 };
 
